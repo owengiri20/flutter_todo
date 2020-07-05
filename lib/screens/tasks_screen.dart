@@ -17,6 +17,8 @@ class TasksScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 50, left: 30, right: 30),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 CircleAvatar(
                   child: Icon(
@@ -54,6 +56,8 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: TasksList(),
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -64,6 +68,28 @@ class TasksScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class TasksList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        TaskTile()
+      ],
+    );
+  }
+}
+
+class TaskTile extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("task"),
+      trailing: Checkbox(value: false,),
     );
   }
 }
