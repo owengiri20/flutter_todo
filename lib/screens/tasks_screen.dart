@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,15 +5,64 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.orange.shade400,
+        child: Icon(Icons.add),
+      ),
       backgroundColor: Colors.orange.shade400,
-      body: Container(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
-            Icon(Icons.list),
-            Text("Todo")
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 50, left: 30, right: 30),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  child: Icon(
+                    Icons.list,
+                    color: Colors.orange.shade400,
+                  ),
+                  radius: 22,
+                  backgroundColor: Colors.white,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Todo",
+                  style: TextStyle(
+                      fontSize: 50,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "12 Tasks",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w300),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20))),
+            ),
+          )
+        ],
       ),
     );
   }
