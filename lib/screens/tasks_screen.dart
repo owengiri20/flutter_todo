@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertodo/widgets/task_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -72,24 +73,3 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-class TasksList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile()
-      ],
-    );
-  }
-}
-
-class TaskTile extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text("task"),
-      trailing: Checkbox(value: false,),
-    );
-  }
-}
