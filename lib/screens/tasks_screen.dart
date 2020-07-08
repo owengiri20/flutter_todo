@@ -1,16 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertodo/models/types.dart';
 import 'package:fluttertodo/widgets/task_list.dart';
 
 import 'add_task_screen.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: "feed dog"),
+    Task(name: "feed cat"),
+    Task(name: "feed cat"),
+    Task(name: "feed cat"),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen((newTitle) {
+              setState(() {
+                print(newTitle);
+                tasks.add(Task(name: newTitle));
+              });
+              
+            }),
+          );
         },
         backgroundColor: Colors.orange.shade400,
         child: Icon(Icons.add),
@@ -23,7 +44,6 @@ class TasksScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 50, left: 30, right: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-
               children: [
                 CircleAvatar(
                   child: Icon(
@@ -62,7 +82,7 @@ class TasksScreen extends StatelessWidget {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
-              child: TasksList(),
+              child: TasksList(tasks),
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -76,4 +96,3 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
-
