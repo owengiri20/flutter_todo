@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertodo/models/types.dart';
 
 class TaskTile extends StatelessWidget {
-//  final bool isChecked;
-//  final String title;
-//  final Function toggleChecked;
-
   final Task task;
-  final Function toggleChecked;
 
-
-  TaskTile(this.task, this.toggleChecked, );
+  TaskTile(this.task);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +17,7 @@ class TaskTile extends StatelessWidget {
         trailing: Checkbox(
           activeColor: Colors.orange.shade400,
           value: task.isDone,
-          onChanged: (v) => toggleChecked(),
+          onChanged: (v) => {},
         ));
   }
 }
-
-//() {
-//setState(() {
-//isChecked = !isChecked;
-//});
-//}

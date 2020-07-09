@@ -49,7 +49,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                print(newTaskTitle);
                 widget.addTask(newTaskTitle);
                 Navigator.pop(context);
               },

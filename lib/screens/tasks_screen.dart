@@ -1,22 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertodo/models/task_data.dart';
 import 'package:fluttertodo/models/types.dart';
 import 'package:fluttertodo/widgets/task_list.dart';
+import 'package:provider/provider.dart';
 
 import 'add_task_screen.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
+class TasksScreen extends StatelessWidget {
 
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: "feed dog"),
-    Task(name: "feed cat"),
-    Task(name: "feed cat"),
-    Task(name: "feed cat"),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +17,7 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) => AddTaskScreen((newTitle) {
-              setState(() {
-                print(newTitle);
-                tasks.add(Task(name: newTitle));
-              });
-              
+
             }),
           );
         },
@@ -67,7 +55,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 10,
                 ),
                 Text(
-                  "12 Tasks",
+                  "${Provider.of<TasksData>(context).tasks.length} Tasks",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.white,
@@ -82,7 +70,7 @@ class _TasksScreenState extends State<TasksScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
-              child: TasksList(tasks),
+              child: TasksList(),
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.white,
